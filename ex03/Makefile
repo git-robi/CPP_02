@@ -1,9 +1,9 @@
-NAME = myFirstClassInOrthodoxCanonicalForm
+NAME = bsp
 CXX = c++            
 CXXFLAGS = -Wall -Wextra -Werror 
-SOURCES = main.cpp Fixed.cpp
+SOURCES = main.cpp Fixed.cpp Point.cpp bsp.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
-HEADERS = Fixed.hpp
+HEADERS = Fixed.hpp Point.hpp
 
 all: $(NAME)
 

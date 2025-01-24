@@ -1,4 +1,4 @@
-NAME = Fixed
+NAME = nowWereTalking
 CXX = c++            
 CXXFLAGS = -Wall -Wextra -Werror 
 SOURCES = main.cpp Fixed.cpp
