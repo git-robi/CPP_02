@@ -39,11 +39,7 @@ int Fixed::toInt( void ) const
 
 float Fixed::toFloat( void ) const
 {
-    int div = 2;
-    for (int i = 1; i < this->fractionalBits; i++)
-        div = div * 2;
-    
-    return ((float)this->numberValue / div);
+    return ((float)this->numberValue / (1 << this->fractionalBits));
 }
 
 Fixed::Fixed(const Fixed& other)
@@ -122,7 +118,7 @@ Fixed	Fixed::operator*(Fixed const &other) const
 Fixed	Fixed::operator/(Fixed const &other) const
 {
 	Fixed	ret;
-	ret.setRawBits(getRawBits() / other.getRawBits() << this->fractionalBits);
+	ret.setRawBits((((long)getRawBits() << this->fractionalBits) / other.getRawBits()));
 	return ret;
 }
 
