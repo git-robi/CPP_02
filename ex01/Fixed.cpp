@@ -28,11 +28,7 @@ Fixed::Fixed(const int n)
 Fixed::Fixed(const float n)
 {
     std::cout << "Float constructor called" << std::endl;
-
-    int mult = 2;
-    for (int i = 1; i < this->fractionalBits; i++)
-        mult = mult * 2;
-    this->numberValue = n * mult;
+    this->numberValue = roundf(n * (1 << this->fractionalBits));
 }
 
 int Fixed::toInt( void ) const
@@ -42,11 +38,7 @@ int Fixed::toInt( void ) const
 
 float Fixed::toFloat( void ) const
 {
-    int div = 2;
-    for (int i = 1; i < this->fractionalBits; i++)
-        div = div * 2;
-    
-    return ((float)this->numberValue / div);
+    return ((float)this->numberValue / (1 << this->fractionalBits));
 }
 
 Fixed::Fixed(const Fixed& other)
